@@ -30,31 +30,38 @@ function activemode(mode){
     }
 }
 
+let isMouseDown = false;
+let div = [];
+let feld = [];
+
 for (let i = 0; i < 8; i++) {
-    const div=document.createElement("div");
-    div.classList.add("maincolorblock");
-    main.appendChild(div);
-
-    let isMouseDown = false;
-
+    div[i]=document.createElement("div");
+    div[i].classList.add("maincolorblock");
+    main.appendChild(div[i]);
     for (let j = 0; j < 8; j++) {
-        const feld = document.createElement("div");
-        feld.style.cssText = "background-color:white; width:50px; height:50px; border-color:black; border-width:5px;";
-        div.appendChild(feld);
-        feld.addEventListener('click', () =>{
-            feld.style.backgroundColor="blue";
-        })
-
-        feld.addEventListener('mousedown', () =>{
-            isMouseDown = true;
-        })
-        feld.addEventListener('mouseup', () =>{
-            isMouseDown = false;
-        })
-        feld.addEventListener('mouseenter', ()=>{
-            if (isMouseDown){
-                feld.style.backgroundColor='blue';
-            }
-        })
+        let aktFE = i*8+j;
+        feld[aktFE] = document.createElement("div");
+        feld[aktFE].style.cssText = "background-color:white; width:50px; height:50px; border-color:black; border-width:5px;";
+        div[i].appendChild(feld[aktFE]);
     }    
 }
+
+
+
+document.addEventListener('mousedown', () =>{
+    isMouseDown = true;
+})
+document.addEventListener('mouseup', () =>{
+    isMouseDown = false;
+})
+
+feld.forEach(div =>{
+    div.addEventListener('click', () =>{
+        div.style.backgroundColor="blue";
+    })
+    div.addEventListener('mouseenter', ()=>{
+        if (isMouseDown){
+            div.style.backgroundColor='blue';
+        }
+    })
+})
