@@ -1,7 +1,7 @@
 const colormode=document.querySelector("#colormode");
 const rainbowmode=document.querySelector("#rainbowmode");
 const erasemode=document.querySelector("#erasemode");
-
+const main=document.querySelector(".main");
 
 colormode.addEventListener('click', () =>{
     activemode(0);
@@ -28,4 +28,15 @@ function activemode(mode){
         rainbowmode.classList.remove("activebtn");
         colormode.classList.remove("activebtn");
     }
+}
+
+for (let i = 0; i < 8; i++) {
+    const div=document.createElement("div");
+    div.classList.add("maincolorblock");
+    main.appendChild(div);
+    for (let j = 0; j < 8; j++) {
+        const feld = document.createElement("div");
+        feld.style.cssText = "background-color:white; width:50px; height:50px; border-color:black; border-width:5px;";
+        div.appendChild(feld);
+    }    
 }

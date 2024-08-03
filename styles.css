@@ -37,7 +37,8 @@ body{
 
 .main{
     background-color: white;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .aside{
@@ -105,4 +106,9 @@ body{
     height: 150px;
     background-color: #f5f6fa;
     opacity: 1;
+}
+
+.maincolorblock{
+    display: flex;
+    flex-direction: row;
 }
