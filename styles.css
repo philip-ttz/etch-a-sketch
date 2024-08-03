@@ -63,7 +63,6 @@ input[type='color']:active {
 }
 
 input[type='color'] {
-  -webkit-appearance: none;
   width: 80px;
   height: 80px;
   border: none;
@@ -103,7 +102,6 @@ input[type='color']::-webkit-color-swatch {
     transform: translate(-50%, -50%);
     width: 20px;
     height: 20px;
-    background-color: #f5f6fa;
     border-radius: 50%;
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
@@ -114,9 +112,8 @@ input[type='color']::-webkit-color-swatch {
     z-index: 1;
 }
   
-.modebtn:hover {
+.modebtn:hover, .activebtn {
     box-shadow: 0 0 0 5px #dcdde1;
-    color: #ffffff;
 }
   
 .modebtn:active {
@@ -126,5 +123,14 @@ input[type='color']::-webkit-color-swatch {
 .modebtn:hover span:last-child {
     width: 200px;
     height: 150px;
+    opacity: 1;
+}
+.activebtn{
+    color: #212121;
+}
+.activebtn span:last-child{
+    width: 200px;
+    height: 150px;
+    background-color: #f5f6fa;
     opacity: 1;
 }
