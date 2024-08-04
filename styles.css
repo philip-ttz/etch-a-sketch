@@ -41,12 +41,15 @@ body{
     display: flex;
     flex-direction: column;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    min-width: 600px;
+    min-height: 600px;
 }
 
 .aside{
     padding: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 50px;
     align-items: center;
 }
