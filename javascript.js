@@ -64,20 +64,26 @@ let color='blue';
 
 feld.forEach(div =>{
     div.addEventListener('click', () =>{
-        if(mode===0){
-            color="blue";
-        }else if(mode ===1){
-            color="blue";
-        }else if(mode ===2){
-            color="white";
-        }else{
-            color='blue';
-        }
-        div.style.backgroundColor=`${color}`;
+        changeColor(div);
+        //div.style.backgroundColor=`${color}`;
     })
     div.addEventListener('mouseenter', ()=>{
         if (isMouseDown){
-            div.style.backgroundColor=`${color}`;
+            changeColor(div);
+            //div.style.backgroundColor=`${color}`;
         }
     })
 })
+
+function changeColor(feld){
+    if(mode===0){
+        color="blue";
+    }else if(mode ===1){
+        color=`#${Math.floor(Math.random()*16777215).toString(16)}`;
+    }else if(mode ===2){
+        color="white";
+    }else{
+        color='blue';
+    }
+    feld.style.backgroundColor=`${color}`;
+}
