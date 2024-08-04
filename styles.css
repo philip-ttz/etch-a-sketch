@@ -194,3 +194,9 @@ body{
     border-radius: 50%;
     padding: 0;
 }
+
+@media (max-width:1000px){
+    .game{
+        flex-direction: column-reverse;
+    }
+}
