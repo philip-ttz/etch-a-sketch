@@ -5,6 +5,7 @@ const main=document.querySelector(".main");
 const clearmode=document.querySelector("#clearmode");
 const gridsize=document.querySelector("#sizeofgrid");
 const output=document.querySelector(".gridsizeoutput");
+const aktcolor=document.querySelector("#color");
 
 let isMouseDown = false;
 let div = [];
@@ -33,8 +34,6 @@ function createGrid(size){
     document.addEventListener('mouseup', () =>{
         isMouseDown = false;
     })
-    
-    let color='blue';
     
     feld.forEach(div =>{
         div.addEventListener('click', () =>{
@@ -80,10 +79,10 @@ function activemode(mode){
         colormode.classList.remove("activebtn");
     }
 }
-
+let color=aktcolor.value;
 function changeColor(feld){
     if(mode===0){
-        color="blue";
+        color=aktcolor.value;
     }else if(mode ===1){
         color=`#${Math.floor(Math.random()*16777215).toString(16)}`;
     }else if(mode ===2){
