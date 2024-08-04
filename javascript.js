@@ -99,10 +99,10 @@ clearmode.addEventListener('click', () =>{
     })
 })
 
-output.textContent="Gridsize is "+gridsize.value;
+output.textContent=gridsize.value+"x"+gridsize.value;
 createGrid(gridsize.value);
 
 gridsize.addEventListener('input', () =>{
-    output.textContent="Gridsize is "+gridsize.value;
+    output.textContent=gridsize.value+"x"+gridsize.value;
     createGrid(gridsize.value);
 })
