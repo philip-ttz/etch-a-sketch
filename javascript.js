@@ -2,6 +2,7 @@ const colormode=document.querySelector("#colormode");
 const rainbowmode=document.querySelector("#rainbowmode");
 const erasemode=document.querySelector("#erasemode");
 const main=document.querySelector(".main");
+const clearmode=document.querySelector("#clearmode");
 
 let mode = 0;
 
@@ -87,3 +88,9 @@ function changeColor(feld){
     }
     feld.style.backgroundColor=`${color}`;
 }
+
+clearmode.addEventListener('click', () =>{
+    feld.forEach(div =>{
+        div.style.backgroundColor='white';
+    })
+})
