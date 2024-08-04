@@ -6,11 +6,49 @@ const clearmode=document.querySelector("#clearmode");
 const gridsize=document.querySelector("#sizeofgrid");
 const output=document.querySelector(".gridsizeoutput");
 
-output.textContent="Gridsize is "+gridsize.value;
+let isMouseDown = false;
+let div = [];
+let feld = [];
 
-gridsize.addEventListener('input', () =>{
-    output.textContent="Gridsize is "+gridsize.value;
-})
+function createGrid(size){
+    main.innerHTML="";
+    
+    for (let i = 0; i < size; i++) {
+        div[i]=document.createElement("div");
+        div[i].classList.add("maincolorblock");
+        main.appendChild(div[i]);
+        for (let j = 0; j < size; j++) {
+            let aktFE = i*size+j;
+            let dimensions = (400/size);
+            feld[aktFE] = document.createElement("div");
+            feld[aktFE].style.cssText = "background-color:white; border-color:black; border-width:5px;";
+            feld[aktFE].style.width=""+dimensions+"px";
+            feld[aktFE].style.height=""+dimensions+"px";
+            div[i].appendChild(feld[aktFE]);
+        }    
+    }
+    document.addEventListener('mousedown', () =>{
+        isMouseDown = true;
+    })
+    document.addEventListener('mouseup', () =>{
+        isMouseDown = false;
+    })
+    
+    let color='blue';
+    
+    feld.forEach(div =>{
+        div.addEventListener('click', () =>{
+            changeColor(div);
+            //div.style.backgroundColor=`${color}`;
+        })
+        div.addEventListener('mouseenter', ()=>{
+            if (isMouseDown){
+                changeColor(div);
+                //div.style.backgroundColor=`${color}`;
+            }
+        })
+    })
+}
 
 let mode = 0;
 
@@ -27,7 +65,6 @@ erasemode.addEventListener('click', () =>{
     mode = 2;
 })
 
-
 function activemode(mode){
     if(mode===0){
         colormode.classList.add("activebtn");
@@ -43,46 +80,6 @@ function activemode(mode){
         colormode.classList.remove("activebtn");
     }
 }
-
-let isMouseDown = false;
-let div = [];
-let feld = [];
-
-for (let i = 0; i < 8; i++) {
-    div[i]=document.createElement("div");
-    div[i].classList.add("maincolorblock");
-    main.appendChild(div[i]);
-    for (let j = 0; j < 8; j++) {
-        let aktFE = i*8+j;
-        feld[aktFE] = document.createElement("div");
-        feld[aktFE].style.cssText = "background-color:white; width:50px; height:50px; border-color:black; border-width:5px;";
-        div[i].appendChild(feld[aktFE]);
-    }    
-}
-
-
-
-document.addEventListener('mousedown', () =>{
-    isMouseDown = true;
-})
-document.addEventListener('mouseup', () =>{
-    isMouseDown = false;
-})
-
-let color='blue';
-
-feld.forEach(div =>{
-    div.addEventListener('click', () =>{
-        changeColor(div);
-        //div.style.backgroundColor=`${color}`;
-    })
-    div.addEventListener('mouseenter', ()=>{
-        if (isMouseDown){
-            changeColor(div);
-            //div.style.backgroundColor=`${color}`;
-        }
-    })
-})
 
 function changeColor(feld){
     if(mode===0){
@@ -101,4 +98,12 @@ clearmode.addEventListener('click', () =>{
     feld.forEach(div =>{
         div.style.backgroundColor='white';
     })
+})
+
+output.textContent="Gridsize is "+gridsize.value;
+createGrid(gridsize.value);
+
+gridsize.addEventListener('input', () =>{
+    output.textContent="Gridsize is "+gridsize.value;
+    createGrid(gridsize.value);
 })
