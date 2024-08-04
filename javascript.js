@@ -3,14 +3,19 @@ const rainbowmode=document.querySelector("#rainbowmode");
 const erasemode=document.querySelector("#erasemode");
 const main=document.querySelector(".main");
 
+let mode = 0;
+
 colormode.addEventListener('click', () =>{
     activemode(0);
+    mode = 0;
 })
 rainbowmode.addEventListener('click', () =>{
     activemode(1);
+    mode = 1;
 })
 erasemode.addEventListener('click', () =>{
     activemode(2);
+    mode = 2;
 })
 
 
@@ -55,13 +60,24 @@ document.addEventListener('mouseup', () =>{
     isMouseDown = false;
 })
 
+let color='blue';
+
 feld.forEach(div =>{
     div.addEventListener('click', () =>{
-        div.style.backgroundColor="blue";
+        if(mode===0){
+            color="blue";
+        }else if(mode ===1){
+            color="blue";
+        }else if(mode ===2){
+            color="white";
+        }else{
+            color='blue';
+        }
+        div.style.backgroundColor=`${color}`;
     })
     div.addEventListener('mouseenter', ()=>{
         if (isMouseDown){
-            div.style.backgroundColor='blue';
+            div.style.backgroundColor=`${color}`;
         }
     })
 })
