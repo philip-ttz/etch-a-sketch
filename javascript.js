@@ -3,6 +3,14 @@ const rainbowmode=document.querySelector("#rainbowmode");
 const erasemode=document.querySelector("#erasemode");
 const main=document.querySelector(".main");
 const clearmode=document.querySelector("#clearmode");
+const gridsize=document.querySelector("#sizeofgrid");
+const output=document.querySelector(".gridsizeoutput");
+
+output.textContent="Gridsize is "+gridsize.value;
+
+gridsize.addEventListener('input', () =>{
+    output.textContent="Gridsize is "+gridsize.value;
+})
 
 let mode = 0;
 
