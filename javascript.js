@@ -20,7 +20,7 @@ function createGrid(size){
         main.appendChild(div[i]);
         for (let j = 0; j < size; j++) {
             let aktFE = i*size+j;
-            let dimensions = (400/size);
+            let dimensions = (600/size);
             feld[aktFE] = document.createElement("div");
             feld[aktFE].style.cssText = "background-color:white; border-color:black; border-width:5px;";
             feld[aktFE].style.width=""+dimensions+"px";
